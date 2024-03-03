@@ -1,17 +1,18 @@
+"use server"
 import CloudinaryImage from '@/Component/cloudinary-image';
 import UploadButton from '@/Component/uploading-button';
-import cloudinary from "cloudinary"
+import cloudinary from "cloudinary";
 
 export type SearchResult = {
-    public_id: string
-}
+    public_id: string;
+};
 
 export default async function Gallery() {
     const results = (await cloudinary.v2.search
         .expression('resource_type:image ')
         .sort_by('created_at', 'desc')
         .max_results(10)
-        .execute()) as { resources: SearchResult[] }
+        .execute()) as { resources: SearchResult[] };
     return (
         <section>
             <div className="flex flex-col gap-8">
@@ -34,5 +35,5 @@ export default async function Gallery() {
                 </div>
             </div>
         </section>
-    )
+    );
 }
