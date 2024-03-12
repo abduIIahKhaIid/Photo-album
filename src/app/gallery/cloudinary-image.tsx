@@ -8,9 +8,13 @@ import { FullHeart } from '@/components/Icons/full-heart';
 
 
 
-export default function CloudinaryImage(props: any & { imageData: SearchResult }) {
+export default function CloudinaryImage(props: any & {
+    imageData: SearchResult; onUnheart: (
+        unheartedResource: SearchResult
+    ) => void
+}) {
     const [transition, startTransition] = useTransition();
-    const { imageData } = props;
+    const { imageData, unheartedResource } = props;
     const [isFavorite, setIsFavorited] = useState(
         imageData.tags?.includes("favorite")
     );
@@ -21,15 +25,17 @@ export default function CloudinaryImage(props: any & { imageData: SearchResult }
                 <FullHeart
                     onClick={() => {
                         setIsFavorited(false);
+                        unheartedResource(imageData);
                         startTransition(() => { setAsFavoriteAction(imageData.public_id, false) })
                     }
                     }
                     className="absolute top-2 right-2 hover:text-white text-red-500 cursor-pointer" />
                 :
                 <Heart
-                    onClick={() => { 
+                    onClick={() => {
                         setIsFavorited(true);
-                        startTransition(() => { setAsFavoriteAction(imageData.public_id, true) }) }
+                        startTransition(() => { setAsFavoriteAction(imageData.public_id, true) })
+                    }
                     }
                     className="absolute top-2 right-2 hover:text-red-500 cursor-pointer" />
             }
