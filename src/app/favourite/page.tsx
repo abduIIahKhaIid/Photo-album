@@ -1,8 +1,8 @@
 
 import CloudinaryImage from '@/app/gallery/cloudinary-image';
-import UploadButton from '@/app/gallery/uploading-button';
 import cloudinary from "cloudinary";
 import { SearchResult } from '../gallery/page';
+import { ForceRefresh } from '@/components/force-refresh';
 
 
 export default async function FavoritesPage() {
@@ -14,6 +14,7 @@ export default async function FavoritesPage() {
         .execute()) as { resources: SearchResult[] };
     return (
         <section>
+            <ForceRefresh />
             <div className="flex flex-col gap-8">
                 <div className='flex justify-between'>
                     <h1 className="text-4xl font-bold">
@@ -25,6 +26,7 @@ export default async function FavoritesPage() {
                         <CloudinaryImage
                             key={result.public_id}
                             imageData={result}
+                            path="/favourite"
                             width="400"
                             height="400"
                             alt="an image of something"

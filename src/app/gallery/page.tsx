@@ -1,6 +1,7 @@
 "use server"
 import CloudinaryImage from '@/app/gallery/cloudinary-image';
 import UploadButton from '@/app/gallery/uploading-button';
+import { ForceRefresh } from '@/components/force-refresh';
 import cloudinary from "cloudinary";
 
 export type SearchResult = {
@@ -13,7 +14,7 @@ export default async function Gallery() {
         .expression('resource_type:image ')
         .sort_by('created_at', 'desc')
         .with_field('tags')
-        .max_results(1)
+        .max_results(4)
         .execute()) as { resources: SearchResult[] };
     return (
         <section>
@@ -29,6 +30,7 @@ export default async function Gallery() {
                         <CloudinaryImage
                             key={result.public_id}
                             imageData={result}
+                            path='/gallery'
                             width="400"
                             height="400"
                             alt="an image of something"
