@@ -1,7 +1,6 @@
 "use server"
 import CloudinaryImage from '@/app/gallery/cloudinary-image';
 import UploadButton from '@/app/gallery/uploading-button';
-import { ForceRefresh } from '@/components/force-refresh';
 import cloudinary from "cloudinary";
 
 export type SearchResult = {
