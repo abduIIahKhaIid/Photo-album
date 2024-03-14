@@ -1,7 +1,7 @@
 "use client";
 import ImageGrid from "@/components/image-grid";
-import CloudinaryImage from "../../components/cloudinary-image";
 import { SearchResult } from "./page";
+import CloudinaryImage from "./cloudinary-image";
 
 
 export default function GalleryGrid({ images }: { images: SearchResult[] }) {
@@ -19,6 +19,7 @@ export default function GalleryGrid({ images }: { images: SearchResult[] }) {
                     />
                 );
             }}
+
         />
     );
 }
