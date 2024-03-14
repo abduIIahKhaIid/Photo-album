@@ -2,6 +2,7 @@ import CloudinaryImage from '@/app/gallery/cloudinary-image';
 import cloudinary from "cloudinary";
 import { SearchResult } from '../gallery/page';
 import ForceRefresh from '@/components/force-refresh';
+import FavoriteList from './favourite-list';
 
 
 export default async function FavoritesPage() {
@@ -20,6 +21,7 @@ export default async function FavoritesPage() {
                         Favourite Images
                     </h1>
                 </div>
+                <FavoriteList initialResources={results.resources} />
                 <div className='grid grid-cols-4 gap-5'>
                     {results.resources.map((result) => (
                         <CloudinaryImage

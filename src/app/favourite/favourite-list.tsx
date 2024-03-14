@@ -1,25 +1,25 @@
+"use client"
 import CloudinaryImage from '@/app/gallery/cloudinary-image';
-import cloudinary from "cloudinary";
 import { SearchResult } from '../gallery/page';
-import ForceRefresh from '@/components/force-refresh';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { ImageGrid } from '@/components/ui/image-grid';
 
 
-export default async function FavoritesPage({ initialResources, }: { initialResources: SearchResult[]; }) {
+export default function FavoriteList({ initialResources, }: { initialResources: SearchResult[]; }) {
     const [resources, setResources] = useState(initialResources);
+    useEffect(() => { setResources(initialResources); }, [initialResources]);
     return (
-        <section>
-            <ForceRefresh />
-            <div className='grid grid-cols-4 gap-5'>
-                {resources.map((result) => (
+        <ImageGrid
+            images={resources}
+            getImage={(imageData: SearchResult) => {
+                return (
                     <CloudinaryImage
-                        key={result.public_id}
-                        imageData={result}
-                        path="/favourite"
+                        key={imageData.public_id}
+                        imageData={imageData}
                         width="400"
-                        height="400"
+                        height="300"
                         alt="an image of something"
-                        onUnheart={(unheartedResource: any) => {
+                        onUnheart={(unheartedResource) => {
                             setResources((currentResources) =>
                                 currentResources.filter(
                                     (resource) =>
@@ -28,8 +28,8 @@ export default async function FavoritesPage({ initialResources, }: { initialReso
                             );
                         }}
                     />
-                ))}
-            </div>
-        </section>
+                );
+            }}
+        />
     );
 }
