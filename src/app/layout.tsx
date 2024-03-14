@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 function SideMenu() {
 
   return (
-    <div className="pb-12 w-1/5">
+    <div className="pb-12 w-1/5 border-r">
       <div className="space-y-4 py-4">
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
@@ -112,7 +112,7 @@ export default function RootLayout({
           </div>
         </div>
 
-        <div className="flex">
+        <div className="flex ">
           <SideMenu />
 
           <div className="w-full px-4 pt-8">{children}</div>
