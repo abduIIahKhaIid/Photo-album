@@ -3,9 +3,9 @@ import { CldImage } from 'next-cloudinary';
 import { setAsFavoriteAction } from './action';
 import { useState, useTransition } from 'react';
 import { SearchResult } from './page';
-import { FullHeart } from '@/components/icons/full-heart';
-import Heart from '@/components/icons/heart';
 
+import Heart from '@/components/icons/heart';
+import { FullHeart } from '@/components/Icons/full-heart';
 
 
 export default function CloudinaryImage(props: any & { imageData: SearchResult }) {

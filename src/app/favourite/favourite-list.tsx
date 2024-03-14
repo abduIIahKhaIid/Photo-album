@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { SearchResult } from "../gallery/page";
-import { CloudinaryImage } from "../../../cloudinary-photos-app/src/components/cloudinary-image";
 import ImageGrid from "@/components/image-grid";
+import CloudinaryImage from "../../components/cloudinary-image";
 
 
 export default function FavoritesList({

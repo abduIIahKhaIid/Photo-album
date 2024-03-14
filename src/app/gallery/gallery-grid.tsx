@@ -1,6 +1,6 @@
 "use client";
 import ImageGrid from "@/components/image-grid";
-import CloudinaryImage from "./cloudinary-image";
+import CloudinaryImage from "../../components/cloudinary-image";
 import { SearchResult } from "./page";
 
 
