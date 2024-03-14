@@ -4,8 +4,8 @@ import { Inter } from 'next/font/google'
 import { Avatar, AvatarFallback, AvatarImage, } from "@/components/ui/avatar"
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import Heart from '@/components/Icons/heart'
 import Link from 'next/link'
+import Heart from '@/components/icons/heart'
 
 const inter = Inter({ subsets: ['latin'] })
 
