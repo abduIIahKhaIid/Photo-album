@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-export function ForceRefresh() {
+export default function ForceRefresh() {
   const router = useRouter();
 
   useEffect(() => {

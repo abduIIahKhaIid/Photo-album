@@ -1,15 +1,19 @@
 "use client";
-import { CldImage } from 'next-cloudinary';
+import { CldImage, CldImageProps } from 'next-cloudinary';
 import { useState, useTransition } from 'react';
 import { SearchResult } from './page';
-import { ForceRefresh } from '@/components/force-refresh';
-import { Heart } from '@/components/Icons/heart';
-import { FullHeart } from '@/components/Icons/full-heart';
-import { setAsFavoriteAction } from './actions';
 import ImageMenu from '@/components/image-menu';
+import setAsFavoriteAction from './actions';
+import FullHeart from '@/components/Icons/full-heart';
+import Heart from '@/components/Icons/heart';
+import ForceRefresh from '@/components/force-refresh';
 
 
-export default function CloudinaryImage(props: any & { imageData: SearchResult }) {
+export default function CloudinaryImage(props: {
+    imageData: SearchResult;
+    onUnheart?: (unheartedResource: SearchResult) => void;
+} & Omit<CldImageProps, "src">) {
+
     const [transition, startTransition] = useTransition();
     const { imageData, onUnheart } = props;
     const [isFavorite, setIsFavorited] = useState(
