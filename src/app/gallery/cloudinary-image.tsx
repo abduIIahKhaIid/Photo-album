@@ -1,18 +1,15 @@
 "use client";
-import { CldImage, CldImageProps } from 'next-cloudinary';
-import { setAsFavoriteAction } from './action';
+import { CldImage } from 'next-cloudinary';
 import { useState, useTransition } from 'react';
 import { SearchResult } from './page';
-import Heart from '@/components/icons/heart';
+import { ForceRefresh } from '@/components/force-refresh';
+import { Heart } from '@/components/Icons/heart';
 import { FullHeart } from '@/components/Icons/full-heart';
-import ForceRefresh from '@/components/force-refresh';
+import { setAsFavoriteAction } from './actions';
 import ImageMenu from '@/components/image-menu';
 
 
-export default function CloudinaryImage(props: {
-    imageData: SearchResult; onUnheart?: (unheartedResource: SearchResult) => void;
-} & Omit<CldImageProps, "src">
-) {
+export default function CloudinaryImage(props: any & { imageData: SearchResult }) {
     const [transition, startTransition] = useTransition();
     const { imageData, onUnheart } = props;
     const [isFavorite, setIsFavorited] = useState(
@@ -26,9 +23,7 @@ export default function CloudinaryImage(props: {
                 <FullHeart
                     onClick={() => {
                         setIsFavorited(false);
-                        startTransition(() => {
-                            setAsFavoriteAction(imageData.public_id, false);
-                        })
+                        startTransition(() => { setAsFavoriteAction(imageData.public_id, false) })
                     }
                     }
                     className="absolute top-2 left-2 hover:text-white text-red-500 cursor-pointer" />
@@ -36,9 +31,7 @@ export default function CloudinaryImage(props: {
                 <Heart
                     onClick={() => {
                         setIsFavorited(true);
-                        startTransition(() => {
-                            setAsFavoriteAction(imageData.public_id, true)
-                        })
+                        startTransition(() => { setAsFavoriteAction(imageData.public_id, true) })
                     }
                     }
                     className="absolute top-2 left-2 hover:text-red-500 cursor-pointer"
