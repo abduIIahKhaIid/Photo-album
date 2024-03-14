@@ -4,7 +4,6 @@ import CloudinaryImage from "./cloudinary-image";
 import ImageGrid from "@/components/image-grid";
 
 export default function GalleryGrid({ images }: { images: SearchResult[] }) {
-  console.log(images);
   return (
     <ImageGrid
       images={images}

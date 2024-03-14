@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage, } from "@/components/ui/avatar"
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { Heart } from '@/components/Icons/heart'
+import Heart from '@/components/Icons/heart'
 
 
 const inter = Inter({ subsets: ["latin"] });

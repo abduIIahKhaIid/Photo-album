@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 
-export function FullHeart(props: ComponentProps<"div">) {
+export default function FullHeart(props: ComponentProps<"div">) {
   return (
     <div {...props}>
       <svg
