@@ -17,7 +17,7 @@ import { useState } from "react"
 import { SearchResult } from "@/app/gallery/page"
 import addImageToAlbum from "./Action"
 
-export default function Addtodialogbox({ image }: { image: SearchResult }) {
+export default function Addtodialogbox({ image, onClose }: { image: SearchResult, onClose: () => void }) {
     const [albumName, setAlbumName] = useState("");
     const [open, setOpen] = useState(false);
     return (
@@ -25,7 +25,7 @@ export default function Addtodialogbox({ image }: { image: SearchResult }) {
             onOpenChange={(newOpenState) => {
                 setOpen(newOpenState);
                 if (!newOpenState) {
-
+                    onClose();
                 }
             }}>
             <DialogTrigger asChild>
@@ -57,9 +57,11 @@ export default function Addtodialogbox({ image }: { image: SearchResult }) {
                 <DialogFooter className="sm:justify-start">
                     <DialogClose asChild>
                         <Button type="submit" onClick={async () => {
+                            onClose();
                             setOpen(false);
-                            await addImageToAlbum(image, albumName)
-                        }}>
+                            await addImageToAlbum(image, albumName);
+                        }}
+                        >
                             Add to Album
                         </Button>
                     </DialogClose>
