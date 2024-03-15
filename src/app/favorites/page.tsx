@@ -2,6 +2,17 @@ import cloudinary from "cloudinary";
 import FavoritesList from "./favorites-list";
 import { SearchResult } from "../gallery/page";
 import ForceRefresh from "@/components/force-refresh";
+import EmptyIcon from "@/components/Icons/empty";
+
+
+export function Empty() {
+  return (
+    <div className="flex justify-center items-center">
+      <EmptyIcon />
+      <h2>This folder is empty</h2>
+    </div>
+  );
+}
 
 export default async function FavoritesPage() {
   const results = (await cloudinary.v2.search
@@ -18,7 +29,7 @@ export default async function FavoritesPage() {
         <div className="flex justify-between">
           <h1 className="text-4xl font-bold">Favorite Images</h1>
         </div>
-        <FavoritesList initialResources={results.resources} />
+        {(results.resources.length) >= 1 ? <FavoritesList initialResources={results.resources} /> : <Empty />}
       </div>
     </section>
   );

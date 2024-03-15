@@ -7,6 +7,7 @@ import setAsFavoriteAction from './actions';
 import FullHeart from '@/components/Icons/full-heart';
 import Heart from '@/components/Icons/heart';
 import ForceRefresh from '@/components/force-refresh';
+import { image } from '@cloudinary/url-gen/qualifiers/source';
 
 
 export default function CloudinaryImage(props: {
@@ -41,7 +42,7 @@ export default function CloudinaryImage(props: {
                     className="absolute top-2 left-2 hover:text-red-500 cursor-pointer"
                 />
             }
-            <ImageMenu />
+            <ImageMenu image={imageData} />
         </div>
     );
 }
