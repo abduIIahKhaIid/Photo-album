@@ -10,7 +10,8 @@ import Menu from "./Icons/menu"
 import Addtodialogbox from "./add-to-album-dialog"
 import { SearchResult } from "@/app/gallery/page"
 import { useState } from "react"
-import { Link } from "lucide-react"
+import Link from "next/link"
+import { Pencil } from "lucide-react"
 
 export default function ImageMenu({ image }: { image: SearchResult }) {
   const [open, setOpen] = useState(false);
@@ -22,15 +23,20 @@ export default function ImageMenu({ image }: { image: SearchResult }) {
             <Menu />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-34">
-          <DropdownMenuItem asChild >
+        <DropdownMenuContent className="w-38">
+          <DropdownMenuItem asChild>
             <Addtodialogbox image={image} onClose={() => setOpen(false)} />
           </DropdownMenuItem>
-          <DropdownMenuItem asChild >
-            <Link href={`/edit/${image.public_id}`}>Edit</Link>
+          <DropdownMenuItem asChild>
+            <Button asChild variant={"ghost"} className="cursor-pointer flex justify-start pl-4">
+              <Link href={`/edit?publicId=${encodeURIComponent(image.public_id)}`} >
+                <Pencil className="mr-2 w-4 h-4" />
+                Edit
+              </Link>
+            </Button>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </div>
+    </div >
   )
 }
