@@ -9,7 +9,7 @@ export function Empty() {
   return (
     <div className="flex justify-center items-center">
       <EmptyIcon />
-      <h2>This folder is empty</h2>
+      <h2>Not Found</h2>
     </div>
   );
 }
