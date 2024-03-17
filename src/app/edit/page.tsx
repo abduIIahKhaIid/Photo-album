@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label";
 import { CldImage } from "next-cloudinary";
 import { useState } from "react";
 
+export const dynamic = 'force-dynamic'
+
 export default function EditPage({ searchParams: { publicId }, }: { searchParams: { publicId: string; }; }) {
     const [transformation, setTransformation] = useState<
         | undefined

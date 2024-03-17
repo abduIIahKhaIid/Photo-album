@@ -14,6 +14,8 @@ export function Empty() {
   );
 }
 
+export const dynamic = 'force-dynamic'
+
 export default async function FavoritesPage() {
   const results = (await cloudinary.v2.search
     .expression("resource_type:image AND tags=favorite")

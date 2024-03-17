@@ -4,6 +4,8 @@ import { Empty } from "../favorites/page";
 
 export type Folder = { name: string; path: string };
 
+export const dynamic = 'force-dynamic'
+
 export default async function AlbumsPage() {
     const { folders } = (await cloudinary.v2.api.root_folders()) as { folders: Folder[]; };
 

@@ -4,6 +4,8 @@ import ForceRefresh from "@/components/force-refresh";
 import AlbumGrid from "./album-grid";
 import { Empty } from "@/app/favorites/page";
 
+export const dynamic = 'force-dynamic'
+
 export default async function GalleryPage({ params: { albumName }, }: { params: { albumName: string; }; }) {
     const results = (await cloudinary.v2.search
         .expression(`resource_type:image AND folder=${albumName === "samples" ? albumName : `${albumName}/samples`}`)
