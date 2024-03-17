@@ -1,9 +1,14 @@
 "use client"
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
     const router = useRouter();
-    router.push('/gallery');
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            router.push('/gallery'); 
+        }
+    }, [router]);
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
 

@@ -7,7 +7,6 @@ import setAsFavoriteAction from './actions';
 import FullHeart from '@/components/Icons/full-heart';
 import Heart from '@/components/Icons/heart';
 import ForceRefresh from '@/components/force-refresh';
-import { image } from '@cloudinary/url-gen/qualifiers/source';
 
 
 export default function CloudinaryImage(props: {
