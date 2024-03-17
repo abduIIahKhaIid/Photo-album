@@ -11,7 +11,7 @@ export default async function GalleryPage({ params: { albumName }, }: { params: 
         .expression(`resource_type:image AND folder=${albumName === "samples" ? albumName : `${albumName}/samples`}`)
         .sort_by("created_at", "desc")
         .with_field("tags")
-        .max_results(30)
+        .max_results(1)
         .execute()) as { resources: SearchResult[] };
 
     return (

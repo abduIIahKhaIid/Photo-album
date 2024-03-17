@@ -16,7 +16,7 @@ export default async function GalleryPage({ searchParams: { search }, }: { searc
         .expression(`resource_type:image${search ? ` AND tags=${search}` : ""}`)
         .sort_by("created_at", "desc")
         .with_field("tags")
-        .max_results(30)
+        .max_results(10)
         .execute()) as { resources: SearchResult[] };
 
     return (
